@@ -1,0 +1,33 @@
+name = "redefine-x-version-api"
+main = "src/worker/index.ts"
+compatibility_date = "2026-01-01"
+
+# KV Namespace Bindings
+# 运行 wrangler kv namespace create "VERSION_CACHE" 创建KV命名空间
+# 然后将返回的ID填入下方
+kv_namespaces = [
+  { binding = "VERSION_CACHE", id = "3b87d56dd2be4bea88ec2997574d899a"}
+]
+
+# Environment Variables
+# REFRESH_SECRET: 用于保护 /api/refresh 端点的密钥
+# 设置方法1: wrangler secret put REFRESH_SECRET
+# 设置方法2: Cloudflare Dashboard > Workers & Pages > 你的Worker > Settings > Variables
+# 推荐使用UUID格式，例如: e4b2c8a1-9f7d-4e3b-a6c5-1d8f2e9a3b7c
+
+# Cron Triggers - 每30分钟刷新一次版本数据
+[triggers]
+crons = ["*/30 * * * *"]
+
+# Routes (可选 - 如果使用自定义域名)
+# 取消注释并修改为你的域名
+routes = [
+  { pattern = "redefine-x-version.jason-yang.top/*", zone_name = "jason-yang.top" }
+]
+
+# Compatibility Flags (可选)
+# [compatibility_flags]
+
+# Limits (可选 - 调整Worker资源限制)
+# [limits]
+# cpu_ms = 10
