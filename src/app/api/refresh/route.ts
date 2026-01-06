@@ -14,27 +14,27 @@ export async function POST(req: NextRequest, res: NextResponse) {
       npmMirrorCDNResult,
     ] = await Promise.all([
       testCDN(
-        "https://cdn.staticfile.org/hexo-theme-redefine/{version}/js/main.js",
+        "https://cdn.staticfile.org/hexo-theme-redefine-x/{version}/js/main.js",
         npmVersion,
       ),
       testCDN(
-        "https://cdn.bootcdn.net/ajax/libs/hexo-theme-redefine/{version}/js/main.js",
+        "https://cdn.bootcdn.net/ajax/libs/hexo-theme-redefine-x/{version}/js/main.js",
         npmVersion,
       ),
       testCDN(
-        "https://s4.zstatic.net/ajax/libs/hexo-theme-redefine/{version}/js/main.js",
+        "https://s4.zstatic.net/ajax/libs/hexo-theme-redefine-x/{version}/js/main.js",
         npmVersion,
       ),
       testCDN(
-        "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine/{version}/js/main.js",
+        "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/hexo-theme-redefine-x/{version}/js/main.js",
         npmVersion,
       ),
       testCDN(
-        "https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-redefine/{version}/js/main.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-redefine-x/{version}/js/main.js",
         npmVersion,
       ),
       testCDN(
-        "https://registry.npmmirror.com/hexo-theme-redefine/{version}/files/source/js/main.js",
+        "https://registry.npmmirror.com/hexo-theme-redefine-x/{version}/files/source/js/main.js",
         npmVersion,
       ),
     ]);
@@ -76,7 +76,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
 const fetchNPMVersion = async () => {
   const response = await fetch(
-    "https://registry.npmjs.org/hexo-theme-redefine",
+    "https://registry.npmjs.org/hexo-theme-redefine-x",
   );
   const data = await response.json();
   return data["dist-tags"].latest;
